@@ -1,0 +1,75 @@
+>>Group details (USN and Name)
+    
+    1.Vaishak P            : 1KS18CS110
+	2.B R Gagan 	       : 1KS17CS015
+	3.Thirumalai Shaktivel : 1KS18CS109
+
+>>Instruction on how to execute the program with at least one example
+    
+    This Program is written in Python2:
+    Open the terminal in the same Folder and Type the following command:
+    python2 ./G22.py -u <username> -p <password> -s <POP3 server>
+    
+    Eg: python2 ./G22.py -u Thirumalai -p 1231 -s localhost
+    
+    >>>>> if any issue with the Ipaddress just use 'localhost'
+
+>>Description of how the program works
+    -Server name, Username and password are taken through command line.
+    -Create socket called clientSocket.
+    -Retrieve emails from POP3 server and display these on the screen.
+    -After the Display, Delete First and Last E-mail.
+    -Then Quit to close the Connection.
+    
+    if any issue in input just type "python2 G22.py --help" for clarification.
+    
+>>Challenges/issues that you faced while writing such program and how did you address the same.
+    
+    We didnt face any difficulty in implementing this program. Since we were familiar with SMTP, the next step of retrieving the Email is through POP3.
+    But also Learnt more about POP3 and Retrival Process.
+
+>>Result detail and explanation
+    $ python2 G22.py -u thirumalai -p 1231 -s localhost
+
+    >> Connecting to the Mail Server...
+
+      +OK Hello there.
+    USER thirumalai
+      +OK Password required.
+    PASS 1231
+    >> Authentication Successful!!
+      +OK logged in.
+
+    >> Displaying the Mails Recieved!!
+
+    LIST
+      +OK POP3 clients that break here, they violate STD53.
+    1 500
+    2 500
+    3 500
+    4 500
+    5 500
+    .
+
+    >> Deleting the First Mail...
+    DELE 1
+      +OK Deleted.
+
+    >> Deleting the Last Mail...
+    DELE 5
+      +OK Deleted.
+
+    >> Displaying the Mail after the Deletion
+
+    LIST
+      +OK POP3 clients that break here, they violate STD53.
+    2 500
+    3 500
+    4 500
+    .
+    QUIT
+      +OK Bye-bye.
+    >> Closing the Connection...
+
+This is a piece of our output, Wherein we used thirumalai as username and 1231 as password and localhost as POP3 server for the retrival of the Mail sent using the SMTP protocol.
+            ================== THE END ===================== 

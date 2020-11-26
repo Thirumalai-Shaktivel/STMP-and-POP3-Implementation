@@ -1,0 +1,100 @@
+>>Group details (USN and Name)
+
+    1.Vaishak P            : 1KS18CS110
+	2.B R Gagan 	       : 1KS17CS015
+	3.Thirumalai Shaktivel : 1KS18CS109
+
+>>Instruction on how to execute the program with at least one example
+    
+    This Program is written in Python2:
+    Open the terminal in the same Folder and Type the following command:
+    python2 ./G22.py -f <from email address> -d <recipient-1 email address>,<recipient 2 email address>,... -i <file1>,<file2>,... -s <server IP address>
+    
+    Eg: pyhton2 ./G22.py -f rprustagi@ksit.local -d 1ks15cs001@ksit.local,1ks15cs002@ksit.local  -i hello.txt,goodbye.txt -s 10.30.26.21 
+    
+    >>>>> if any issue with the Ipaddress just use 'localhost' and provide the recipient email as the different user in the host computer.
+    >> if u want to change the Message, just add the file to the same directory and replace the filename in the command line arguements.
+
+>>Description of how the program works:
+
+    -SMTP client to send more than one email in the same session.
+    -The connection for the Mail Server is made through the Port Number 25.
+    -Create socket called clientSocket and establish a TCP connection with Mailserver or IpAddress and send the Mail. 
+    -From and To address are given through the Command line itself, So the Program Takes the input and send the respective Message to respective E-mail Address. Which means, 1ks15cs001@ksit.local > > hello.txt & 1ks15cs002@ksit.local > > goodbye.txt
+    -For Every recipient there should compulsorily be an Message file
+    -The File name is taken as the Subject of the Mail and the content of the file is taken as the Body of the Mail.
+    -Added From, To, and Date in Message for proper mail format.
+    -Any Number of Recipient Email can be used to send the Mail.
+    
+    if any issue in input just type "python2 G22.py --help" for clarification.
+    
+>>Challenges/issues that you faced while writing such program and how did you address the same.
+
+    At 1st We started the program with C, But it was very Difficult to implent the Program. Later We Made many Research and Settled with python2.
+    We learnt postfix, SMTP, portNumber, Ipaddress, TCP Mechanism for the tranfer of Data.
+    Also learnt about Argparse module, we helped in passing the Arguement to the program.
+    From Socket Module, We learnt many things, like HELO (an
+abbreviation for HELLO), MAIL FROM, RCPT TO, DATA, and QUIT used in the process of sending the E-mail to the destination.
+
+>>Result detail and explanation
+    $ python2 G22.py -f Gagan -d Shakti,Vaishak -i goodbye.txt,hello.txt -s localhost
+
+    >> Connecting to the Mail Server...
+
+      220 Ubuntu-vm ESMTP Postfix (Ubuntu)
+    HELO localhost
+      250 Ubuntu-vm
+
+    >> Successfully Connected to the IpAddress: 'localhost' through port-number: 25
+
+    MAIL FROM: Gagan
+      250 2.1.0 Ok
+    RCPT TO: Shakti
+      250 2.1.5 Ok
+    DATA 
+      354 End data with <CR><LF>.<CR><LF>
+
+    From: Gagan
+    To: Shakti
+    Date: Sat Nov 14 22:38:53 2020
+
+    Subject: goodbye
+
+    Ok, See You Later!!
+    Have A Nice Day, Keep Coding
+    GOODBYE!!
+
+    .
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    MAIL FROM: Gagan
+      250 2.0.0 Ok: queued as 7A8EFE030C
+    250 2.1.0 Ok
+    RCPT TO: Vaishak
+      250 2.1.5 Ok
+    DATA 
+      354 End data with <CR><LF>.<CR><LF>
+
+    From: Gagan
+    To: Vaishak
+    Date: Sat Nov 14 22:38:54 2020
+
+    Subject: hello
+
+    Hello Internet!!
+    Welcome to the World of Programming
+    Lets get Connected through internet!!
+
+    .
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    QUIT 
+      250 2.0.0 Ok: queued as 51C58E1252
+    221 2.0.0 Bye
+
+    >> Closing the Connection...
+
+This is a piece of our output, Wherein we have given Gagan as, from address and Shakti, Vaishak as, to Address with the Message stored in the file hello.txt and goodbye.txt respectively.
+            
+            ================== THE END ===================== 
+
